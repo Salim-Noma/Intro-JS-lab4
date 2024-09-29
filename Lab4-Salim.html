@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Salim Store</title>
+    </head>
+    <body>
+      <div class="info" id="order-info"></div>
+      <script>
+        alert("Welcome to the store!");
+        let customerName = prompt("What is your name?");
+        let requestedItem = prompt("What item would you like to order?");
+        let numberOfItems;
+        do {
+            numberOfItems = prompt("How many items would you like to order? (1-99)");
+            numberOfItems = parseInt(numberOfItems, 10); 
+        } while (isNaN(numberOfItems) || numberOfItems < 1 || numberOfItems > 99);
+        let currentDate = new Date();
+        let hours = currentDate.getHours();
+        let greeting = "Greeting";
+        let orderInfo = `
+            <h2>${greeting}, ${customerName}! Thank you for your order.</h2>
+            <p>You have requested <strong>${numberOfItems}</strong> item(s) of <strong>${requestedItem}</strong>.</p>
+        `;
+        let arrivalDate = new Date();
+        arrivalDate.setDate(currentDate.getDate() + 7);
+        let formattedDate = arrivalDate.toDateString();
+        orderInfo += `<p>Your order is arrive on: <strong>${formattedDate}</strong>.</p>`;
+        document.getElementById("order-info").innerHTML = orderInfo;
+      </script>
+    </body>
+</html>
